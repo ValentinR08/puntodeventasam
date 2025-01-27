@@ -12,6 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::create('inventario', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('catalogo_id');
+            $table->string('nombre',50);
+            $table->integer('precio');
+            $table->integer('stock');
+            $table->foreign('catalogo_id')->references('id')->on('Catalogo');
+            $table->timestamps();
+        });
     }
 
     /**
