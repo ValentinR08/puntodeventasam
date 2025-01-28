@@ -11,7 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('ventas', function (Blueprint $table) {
+            $table->id('id_venta');
+            $table->datetime('fecha_hora');
+            $table->foreignId('id_cliente')->constrained();  
+            $table->string('metodo_pago');
+            $table->string('estado');
+            $table->integer('impuestos');
+            $table->decimal('propina');
+        });
+        
     }
 
     /**
