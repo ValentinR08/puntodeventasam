@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('ventas', function (Blueprint $table) {
             $table->id('id_venta');
             $table->datetime('fecha_hora');
-            $table->foreignId('id_cliente')->constrained();  
+            $table->foreignId('id_cliente')->references('id')->on('users');//error de fer a una referencia a una tabla que no existe
             $table->string('metodo_pago');
             $table->string('estado');
             $table->integer('impuestos');
