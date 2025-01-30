@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nombre',30);
             $table->integer('edad');
             $table->string('apellido',30);
-            $table->string('telefono',12);
+            $table->string('telefono',20);
             $table->string('email')->unique();
         });
     }
