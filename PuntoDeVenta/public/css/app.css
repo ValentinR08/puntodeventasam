@@ -58,6 +58,32 @@ body {
   color: var(--hover-color);
 }
 
+.main-content {
+  margin-left: 250px; /* Se alinea a la derecha del sidebar */
+  padding: 20px;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* Sidebar colapsado */
+.app-sidebar.collapsed {
+  width: 70px;
+}
+
+.app-sidebar.collapsed .app-menu__label {
+  display: none; /* Oculta los textos */
+}
+
+.app-sidebar.collapsed .app-sidebar__user-name,
+.app-sidebar.collapsed .app-sidebar__user-designation {
+  display: none; /* Oculta el usuario */
+}
+
+/* Ajustar contenido cuando el sidebar está colapsado */
+.app-sidebar.collapsed + .main-content {
+  margin-left: 70px;
+}
+
+
 .container {
   width: 80%;
   margin: 50px auto;
