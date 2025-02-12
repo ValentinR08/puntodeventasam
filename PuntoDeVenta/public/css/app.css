@@ -1,81 +1,144 @@
 :root {
-    --sidebar-bg: 	#ff0000;
-    --sidebar-hover: #334155;
-    --text-color: #f8fafc;
-    --icon-color: #38bdf8;
-    --hover-color: #0ea5e9;
-  }
-  
-html{
-    font-size: 10px;
-}
-body{
-    margin: 0;
-    padding: 0;
-    display: grid;
-    min-height: 100vh;
-    grid-template-rows: auto 1fr auto;
+  --sidebar-bg: #ff0000;
+  --sidebar-hover: #334155;
+  --text-color: #f8fafc;
+  --icon-color: #38bdf8;
+  --hover-color: #0ea5e9;
 }
 
-  .app-sidebar {
-    width: 250px;
-    height: 100vh;
-    background: var(--sidebar-bg);
-    color: var(--text-color);
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding-top: 20px;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .app-sidebar__user {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .app-sidebar__user img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .app-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .app-menu__item {
-    display: flex;
-    align-items: center;
-    padding: 12px 20px;
-    text-decoration: none;
-    color: var(--text-color);
-    font-size: 16px;
-    transition: background 0.3s ease-in-out;
-  }
-  
-  .app-menu__item:hover {
-    background: var(--sidebar-hover);
-    color: var(--hover-color);
-  }
-  
-  .app-menu__icon {
-    margin-right: 10px;
-    color: var(--icon-color);
-    font-size: 18px;
-  }
-  
-  .treeview-indicator {
-    margin-left: auto;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .treeview:hover .treeview-indicator {
-    transform: rotate(90deg);
-  }
-  
+html {
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+}
+
+.app-sidebar {
+  width: 250px;
+  height: 100vh;
+  background: var(--sidebar-bg);
+  color: var(--text-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.app-sidebar__user {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.app-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.app-menu__item {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 16px;
+  transition: background 0.3s ease-in-out;
+}
+
+.app-menu__item:hover {
+  background: var(--sidebar-hover);
+  color: var(--hover-color);
+}
+
+.container {
+  width: 80%;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+/* Formulario */
+#userForm {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+/* Tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th, table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background-color: #f8f9fa;
+}
+
+table tr:hover {
+  background-color: #f1f1f1;
+}
+
+table button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+}
+
+table button:hover {
+  background-color: #0056b3;
+}

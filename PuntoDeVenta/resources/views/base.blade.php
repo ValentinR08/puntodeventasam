@@ -54,5 +54,8 @@
       </li>
     </ul>
   </aside>
+
+    @yield('content')
+
 </body>
 </html>
