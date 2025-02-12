@@ -22,12 +22,14 @@ class usuarioController extends Controller
         $request->validate([
             'nombre' => 'required',
             'apellido' => 'required',
+            'genero' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:6',
         ]);
         $usuario = new User();
         $usuario->nombre = $request->nombre;
         $usuario->apellido = $request->apellido;
+        $usuario->genero = $request->genero;
         $usuario->email = $request->email;
         $usuario->password = Hash::make($request->password);
         $usuario->save();

@@ -30,3 +30,4 @@ Route::get('/usuarios/{id}',[usuarioController::class,'show']);
 Route::get('/usuarios/{id}/edit',[usuarioController::class,'edit']);
 Route::post('/usuarios/{id}',[usuarioController::class,'update']);
 Route::delete('/usuarios/{id}',[usuarioController::class,'destroy']);
+
