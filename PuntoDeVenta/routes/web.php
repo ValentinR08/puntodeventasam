@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\usuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-Route::get('/usuarios', function () {
-    return view('usuarios');
-});
+// Usuarios
+Route::get('/usuarios', [usuarioController::class,'index']);
+Route::get('/usuarios/create',[usuarioController::class,'create']);
+Route::post('/usuarios',[usuarioController::class,'store']);
+Route::get('/usuarios/{id}',[usuarioController::class,'show']);
+Route::get('/usuarios/{id}/edit',[usuarioController::class,'edit']);
+Route::post('/usuarios/{id}',[usuarioController::class,'update']);
+Route::delete('/usuarios/{id}',[usuarioController::class,'destroy']);
+
