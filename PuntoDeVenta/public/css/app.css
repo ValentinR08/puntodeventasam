@@ -1,9 +1,12 @@
 :root {
-  --sidebar-bg: #ff0000;
-  --sidebar-hover: #334155;
+  --color1: #e85d3a;
+  --color2: #293241;
+  --color3: #3D5A80;
+  --color4: #98C1D9;
+  --color5: #E0FBFC;
+
   --text-color: #f8fafc;
-  --icon-color: #38bdf8;
-  --hover-color: #0ea5e9;
+  --text-color2: black;
 }
 
 html {
@@ -21,7 +24,7 @@ body {
 .app-sidebar {
   width: 250px;
   height: 100vh;
-  background: var(--sidebar-bg);
+  background: var(--color1);
   color: var(--text-color);
   position: fixed;
   top: 0;
@@ -54,12 +57,12 @@ body {
 }
 
 .app-menu__item:hover {
-  background: var(--sidebar-hover);
-  color: var(--hover-color);
+  background: var(--color3);
+  color: var(--color4);
 }
 
 .main-content {
-  margin-left: 250px; /* Se alinea a la derecha del sidebar */
+  margin-left: 250px; 
   padding: 20px;
   transition: margin-left 0.3s ease-in-out;
 }
@@ -70,19 +73,17 @@ body {
 }
 
 .app-sidebar.collapsed .app-menu__label {
-  display: none; /* Oculta los textos */
+  display: none;
 }
 
 .app-sidebar.collapsed .app-sidebar__user-name,
 .app-sidebar.collapsed .app-sidebar__user-designation {
-  display: none; /* Oculta el usuario */
+  display: none;
 }
 
-/* Ajustar contenido cuando el sidebar está colapsado */
 .app-sidebar.collapsed + .main-content {
   margin-left: 70px;
 }
-
 
 .container {
   width: 80%;
@@ -125,44 +126,6 @@ h1 {
   background-color: #0056b3;
 }
 
-
-/* Formulario */
-#userForm {
-  margin-bottom: 20px;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  color: #555;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button {
-  padding: 10px 15px;
-  background-color: #28a745;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #218838;
-}
-
-/* Tabla */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -198,14 +161,14 @@ table button:hover {
 }
 
 .modal {
-  display: none; /* Escondido por defecto */
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro */
+  background-color: rgba(0, 0, 0, 0.4);
   padding-top: 60px;
 }
 
@@ -224,6 +187,20 @@ table button:hover {
   font-size: 20px;
 }
 
+.modal button {
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal button:hover {
+  background-color: #218838;
+}
+
+
 .close-btn {
   color: #aaa;
   font-size: 30px;
@@ -241,7 +218,6 @@ table button:hover {
   cursor: pointer;
 }
 
-/* Estilos de formulario */
 .form-group {
   margin-bottom: 15px;
 }
