@@ -16,7 +16,7 @@
     <div class="app-sidebar__user">
       <box-icon color="white" size="lg" name='user'></box-icon>
       <div>
-        <p class="app-sidebar__user-name">Valentín RIvera</p>
+        <p class="app-sidebar__user-name">Juan Leal</p>
         <p class="app-sidebar__user-designation">Administrador</p>
       </div>
     </div>
