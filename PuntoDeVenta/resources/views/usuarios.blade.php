@@ -26,23 +26,30 @@
     <div class="modal-content">
         <span class="close-btn" id="closeModalBtn">&times;</span>
         <h2>Agregar Usuario</h2>
-        <form id="userForm">
+        <form id="userForm" class="formulario">
             <div class="form-group">
-                <label for="name">Nombre y Apellido</label>
-                <input type="text" id="name" required>
+                <input type="text" id="name" name="name" placeholder=" " required>
+                <label for="name">Nombre</label>
             </div>
             <div class="form-group">
-                <label for="gender">Género</label>
-                <select id="gender">
+                <input type="text" id="apellido" name="apellido" placeholder=" " required>
+                <label for="name">Apellido</label>
+            </div>
+            <div class="form-group">
+                <select id="gender" name="gender" required>
+                    <option value="" selected hidden></option>
                     <option value="Masculino">Masculino</option>
                     <option value="Femenino">Femenino</option>
                 </select>
+                <label for="gender">Género</label>
             </div>
             <div class="form-group">
+                <input type="email" id="email" name="email" placeholder=" " required>
                 <label for="email">Email</label>
-                <input type="email" id="email" required>
             </div>
-            <button type="submit" class="btn">Guardar</button>
+            <div class="modal-buttons">
+                <button type="submit" class="save">Guardar</button>
+            </div>
         </form>
     </div>
 </div>
