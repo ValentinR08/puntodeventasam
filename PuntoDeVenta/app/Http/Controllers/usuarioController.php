@@ -11,7 +11,8 @@ class usuarioController extends Controller
     //
     public function index()
     {
-        return view('usuarios');
+        $usuarios = User::all();
+        return view('usuarios', compact('usuarios'));
     }
     public function create()
     {
@@ -23,17 +24,17 @@ class usuarioController extends Controller
             'nombre' => 'required',
             'apellido' => 'required',
             'genero' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:6',
+            'email' => 'required',
+            'password' => 'required',
         ]);
         $usuario = new User();
-        $usuario->nombre = $request->nombre;
+        $usuario->name = $request->nombre;
         $usuario->apellido = $request->apellido;
         $usuario->genero = $request->genero;
         $usuario->email = $request->email;
         $usuario->password = Hash::make($request->password);
         $usuario->save();
-        return redirect('/usuarios');
+        return redirect()->route('usuarios.index')->with('success', 'Usuario guardado correctamente.');
     }
     public function show($id)
     {
@@ -50,11 +51,11 @@ class usuarioController extends Controller
         $request->validate([
             'nombre' => 'required',
             'apellido' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:6',
+            'email' => 'required',
+            'password' => 'required',
         ]);
         $usuario = User::find($id);
-        $usuario->nombre = $request->nombre;
+        $usuario->name = $request->nombre;
         $usuario->apellido = $request->apellido;
         $usuario->email = $request->email;
         $usuario->password = Hash::make($request->password);

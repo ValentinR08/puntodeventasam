@@ -23,11 +23,12 @@ Route::get('/dashboard', function () {
 });
 
 // Usuarios
-Route::get('/usuarios', [usuarioController::class,'index']);
+Route::get('/usuarios', [usuarioController::class,'index'])->name('usuarios.index');
 Route::get('/usuarios/create',[usuarioController::class,'create']);
-Route::post('/usuarios',[usuarioController::class,'store']);
+Route::post('/usuarios/data',[usuarioController::class,'store'])->name('users.store');
 Route::get('/usuarios/{id}',[usuarioController::class,'show']);
 Route::get('/usuarios/{id}/edit',[usuarioController::class,'edit']);
 Route::post('/usuarios/{id}',[usuarioController::class,'update']);
 Route::delete('/usuarios/{id}',[usuarioController::class,'destroy']);
+
 

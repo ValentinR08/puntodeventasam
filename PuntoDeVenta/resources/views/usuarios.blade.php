@@ -17,37 +17,29 @@
         </tr>
     </thead>
     <tbody>
+        @foreach ($usuarios as $usuario)
         <tr>
-            <td>1</td>
-            <td>Samantha Gallegos</td>
-            <td>Femenino</td>
-            <td>samanthagallegos@gmail.com</td>
+            <td>{{ $usuario->id }}</td>
+            <td>{{ $usuario->name }} {{ $usuario->apellido }}</td>
+            <td>{{ $usuario->genero }}</td>
+            <td>{{ $usuario->email }}</td>
             <td>
-                <button class="view-btn">Ver</button>
-                <button class="edit-btn">Editar</button>
-                <button class="delete-btn">Eliminar</button>
+                <button class="view-btn" data-id="{{ $usuario->id }}">Ver</button>
+                <button class="edit-btn" data-id="{{ $usuario->id }}">Editar</button>
+                <button class="delete-btn" data-id="{{ $usuario->id }}">Eliminar</button>
             </td>
         </tr>
-        <tr>
-            <td>1</td>
-            <td>Juan Leal</td>
-            <td>Masculino</td>
-            <td>juanleal@email.com</td>
-            <td>
-                <button class="view-btn">Ver</button>
-                <button class="edit-btn">Editar</button>
-                <button class="delete-btn">Eliminar</button>
-            </td>
-        </tr>
+    @endforeach
     </tbody>
 </table>
 <div id="userModal" class="modal">
     <div class="modal-content">
         <span class="close-btn" id="closeModalBtn">&times;</span>
         <h2>Agregar Usuario</h2>
-        <form id="userForm" class="formulario">
+        <form id="userForm" class="formulario" method="POST" action="{{ route('users.store') }}">
+            @csrf
             <div class="form-group">
-                <input type="text" id="name" name="name" placeholder=" " required>
+                <input type="text" id="name" name="nombre" placeholder=" " required>
                 <label for="name">Nombre</label>
             </div>
             <div class="form-group">
@@ -55,8 +47,8 @@
                 <label for="apellido">Apellido</label>
             </div>
             <div class="form-group">
-                <select id="gender" name="gender" required>
-                    <option value="" selected hidden></option>
+                <select id="gender" name="genero" required>
+                    <option value="" selected hidden>Seleccionar género</option>
                     <option value="Masculino">Masculino</option>
                     <option value="Femenino">Femenino</option>
                 </select>
@@ -136,10 +128,6 @@
     </div>
 </div>
 
-
-
-<script src="{{ asset('js/ver.js') }}"></script>
-<script src="{{ asset('js/editar.js') }}"></script>
-<script src="{{ asset('js/delete.js') }}"></script>
+<script src="{{ asset('js/editarverdelete.js') }}"></script>
 @endsection
 

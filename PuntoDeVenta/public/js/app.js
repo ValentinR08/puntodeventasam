@@ -20,19 +20,4 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // Evitar el envío por defecto del formulario
-    const userForm = document.getElementById("userForm");
-    userForm.onsubmit = function(event) {
-        event.preventDefault();
-
-        const name = document.getElementById("name").value;
-        const gender = document.getElementById("gender").value;
-        const email = document.getElementById("email").value;
-
-        console.log("Usuario agregado:", { name, gender, email });
-
-        // Aquí puedes agregar la lógica para guardar el nuevo usuario (por ejemplo, enviar al servidor)
-
-        modal.style.display = "none"; // Cerrar el modal después de enviar
-    }
 });

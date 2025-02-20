@@ -60,7 +60,7 @@ body {
 
 .app-menu__item:hover {
   background: var(--color3);
-  color: var(--color4);
+  color: var(--text-color);
 }
 
 .main-content {
@@ -173,20 +173,20 @@ table button {
 
 
 table .edit-btn {
-  background-color: #ffc107;
+  background-color: var(--color2);
 }
 
 table .edit-btn:hover {
-  background-color: #e0a800;
+  background-color: var(--color3);
 }
 
 
 table .view-btn {
-  background-color: #007bff;
+  background-color: var(--color1);
 }
 
 table .view-btn:hover {
-  background-color: #0056b3;
+  background-color:  #c95134;
 }
 
 table .delete-btn {
@@ -204,6 +204,8 @@ table .delete-btn:hover {
   z-index: 1000;
   left: 0;
   top: 0;
+  background: rgba(0, 0, 0, 0.2); /* Fondo semitransparente */
+  backdrop-filter: blur(8px); /* Efecto de desenfoque */
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
