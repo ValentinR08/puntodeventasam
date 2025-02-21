@@ -1,0 +1,1 @@
+{"version":1,"defects":{"Tests\\Feature\\LoginTest::test_example":7,"Tests\\Feature\\UsuarioTest::puede_crear_un_usuario":7},"times":{"Tests\\Feature\\LoginTest::test_example":0.083,"Tests\\Feature\\UsuarioTest::puede_crear_un_usuario":0.072}}

@@ -27,7 +27,7 @@ class usuarioController extends Controller
             'password' => 'required|min:6',
         ]);
         $usuario = new User();
-        $usuario->nombre = $request->nombre;
+        $usuario->name = $request->nombre;
         $usuario->apellido = $request->apellido;
         $usuario->genero = $request->genero;
         $usuario->email = $request->email;
