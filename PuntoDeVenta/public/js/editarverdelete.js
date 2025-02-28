@@ -50,26 +50,6 @@ document.addEventListener("DOMContentLoaded", function() {
     closeDeleteBtn.addEventListener("click", () => deleteModal.style.display = "none");
 
     confirmDeleteBtn.addEventListener("click", async function() {
-        if (userIdToDelete !== null) {
-            try {
-                // Usar la variable correcta
-                const response = await fetch(`/usuarios/${userIdToDelete}`, {
-                    method: 'DELETE',
-                    headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                    }
-                });
-
-                if (response.ok) {
-                    document.querySelector(`tr[data-id='${userIdToDelete}']`).remove();
-                    alert("Usuario eliminado correctamente");
-                } else {
-                    alert("Error al eliminar usuario");
-                }
-            } catch (error) {
-                alert("Error en la solicitud");
-            }
-        }
         deleteModal.style.display = "none";
     });
 

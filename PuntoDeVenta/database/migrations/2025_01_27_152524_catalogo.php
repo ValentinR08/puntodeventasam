@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('precio');
             $table->integer('stock');
             $table->foreign('catalogo_id')->references('id')->on('Catalogo');
+            $table->boolean('activo')->default(true);
             $table->timestamps();
         });
     }

@@ -29,19 +29,19 @@
         </a>
       </li>
       <li class="treeview">
-        <a class="app-menu__item" href="#">
+        <a class="app-menu__item" href="{{ route('usuarios.index') }}">
           <box-icon size="lg" color="white" type='solid' name='user-rectangle'></box-icon>
           <span class="app-menu__label">Usuarios</span>
         </a>
       </li>
       <li class="treeview">
-        <a class="app-menu__item" href="#">
+        <a class="app-menu__item" href="{{ route('products.index') }}">
           <box-icon size="lg" color="white" name='box' type='solid' ></box-icon>
           <span class="app-menu__label">Productos</span>
         </a>
       </li>
       <li class="treeview">
-        <a class="app-menu__item" href="#">
+        <a class="app-menu__item" href="{{ route('catalogo.index') }}">
           <box-icon size="lg" color="white" name='list-ul' ></box-icon>
           <span class="app-menu__label">Catálogo</span>
         </a>

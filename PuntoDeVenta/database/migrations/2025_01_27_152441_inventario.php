@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('Catalogo', function (Blueprint $table) {
             $table->id();
             $table->string('TipoProducto',50);
+            $table->boolean('activo')->default(true);
             $table->timestamps();
 
         });

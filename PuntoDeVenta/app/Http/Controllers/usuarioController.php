@@ -11,7 +11,7 @@ class UsuarioController extends Controller
     //
     public function index()
     {
-        $usuarios = User::all();
+        $usuarios = User::where('activo', true)->get();
         return view('usuarios', compact('usuarios'));
     }
     public function create()
@@ -48,6 +48,7 @@ class UsuarioController extends Controller
     }
     public function update(Request $request, $id)
     {
+        
         $request->validate([
             'nombre' => 'required',
             'apellido' => 'required',
@@ -65,7 +66,7 @@ class UsuarioController extends Controller
     public function destroy($id)
     {
         $usuario = User::findOrFail($id);
-        $usuario->delete();
+        $usuario->active = false;
     
         return response()->json(['message' => 'Usuario eliminado correctamente']);
     }    

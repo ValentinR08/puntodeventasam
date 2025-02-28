@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('estado');
             $table->integer('impuestos');
             $table->decimal('propina');
+            $table->boolean('activo')->default(true);
+            $table->timestamps();
         });
         
     }

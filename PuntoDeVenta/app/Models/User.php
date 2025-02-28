@@ -23,6 +23,7 @@ class User extends Authenticatable
         'genero',
         'email',
         'password',
+        'activo'
     ];
 
     /**

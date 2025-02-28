@@ -5,6 +5,15 @@
 <div class="topusers">
     <h2>USUARIOS</h2>
     <button id="newUserBtn" class="btn btn-primary">Agregar</button>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 </div>
 <table id="userTable">
     <thead>
@@ -84,13 +93,13 @@
     <div class="modal-content large-modal">
         <span class="close-btn" id="closeEditModalBtn">&times;</span>
         <h2>Editar Usuario</h2>
-        <form id="editUserForm" class="formulario" method="POST" action="{{ route('users.update', ['id' => $usuario->id]) }}">
+        <form id="editUserForm" class="formulario" method="POST" action="{{ route('users.update',$usuario->id) }}">
             @csrf
             @method('PUT')
             <input type="hidden" id="editUserId" name="id">
             
             <div class="form-group">
-                <input type="text" id="editName" name="name" placeholder=" " required>
+                <input type="text" id="editName" name="nombre" placeholder=" " required>    
                 <label for="editName">Nombre</label>
             </div>
             <div class="form-group">
@@ -119,7 +128,7 @@
         </form>
     </div>
 </div>
-<div id="deleteUserForm" method="POST" action="{{ route('users.destroy', ['id' => $usuario->id]) }}">
+<div id="deleteUserForm" method="POST" action="{{ route('users.destroy', $usuario->id) }}">
     @csrf
     @method('DELETE')
     <div class="modal-content">
@@ -127,7 +136,7 @@
         <h2>¿Estás seguro de que deseas eliminar este usuario?</h2>
         <p class="warning-text">Esta acción no se puede deshacer.</p>
         <div class="modal-buttons">
-            <button id="confirmDeleteBtn" class="btn btn-danger">Eliminar</button>
+            <button id="confirmDeleteBtn" class="btn btn-danger" type="submit">Eliminar</button>
         </div>
     </div>
 </d>
