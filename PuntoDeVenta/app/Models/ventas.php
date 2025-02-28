@@ -9,6 +9,6 @@ class ventas extends Model
 {
     use HasFactory;
     protected $table = 'ventas';
-    protected $fillable = ['fecha_hora','id_cliente','metodo_pago','estado','impuestos','propina'];
+    protected $fillable = ['fecha_hora','id_cliente','metodo_pago','estado','impuestos','propina','activo'];
     
 }

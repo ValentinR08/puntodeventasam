@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\catalogo;
 use App\Models\inventario;
 use Illuminate\Http\Request;
 
@@ -10,8 +11,9 @@ class ProductController extends Controller
     //
     public function index()
     {
-        $products = inventario::where('activo', true)->get();
-        return view('productos', compact('products'));
+        $productos = inventario::where('activo', true)->get();
+        $categorias = catalogo::where('activo', true)->get();
+        return view('productos', compact('productos','categorias'));
     }
    
     public function store(Request $request)

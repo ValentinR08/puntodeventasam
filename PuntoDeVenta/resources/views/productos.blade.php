@@ -31,10 +31,9 @@
         @foreach ($productos as $producto)    
         <tr>
             <td>{{ $producto->id }}</td>
-            <td>{{ $producto->name }}</td>
-            <td>{{ $producto->price }}</td>
-            <td>{{ $producto->quantity }}</td>
-            <td>{{ $producto->description }}</td>
+            <td>{{ $producto->nombre }}</td>
+            <td>{{ $producto->precio }}</td>
+            <td>{{ $producto->stock }}</td>
             <td>{{ $producto->category->name }}</td>
             <td>
                 <button class="view-btn" data-id="{{ $producto->id }}">Ver</button>
@@ -100,7 +99,7 @@
     <div class="modal-content large-modal">
         <span class="close-btn" id="closeEditModalBtn">&times;</span>
         <h2>Editar Producto</h2>
-        <form id="editProductForm" class="formulario" method="POST" action="{{ route('products.update',$producto->id) }}">
+        <form id="editProductForm" class="formulario" method="POST" action="{{ route('products.update',$producto->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <input type="hidden" id="editProductId" name="id">
