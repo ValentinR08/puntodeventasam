@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class usuarioController extends Controller
+class UsuarioController extends Controller
 {
     //
     public function index()
@@ -64,8 +64,9 @@ class usuarioController extends Controller
     }
     public function destroy($id)
     {
-        $usuario = User::find($id);
+        $usuario = User::findOrFail($id);
         $usuario->delete();
-        return redirect('/usuarios');
-    }
+    
+        return response()->json(['message' => 'Usuario eliminado correctamente']);
+    }    
 }

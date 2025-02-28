@@ -7,19 +7,24 @@ document.addEventListener("DOMContentLoaded", function() {
     editButtons.forEach(button => {
         button.addEventListener("click", function() {
             const row = this.closest("tr");
-            const userId = row.cells[0].innerText;
-            const userName = row.cells[1].innerText.split(" ")[0];
-            const userApellido = row.cells[1].innerText.split(" ").slice(1).join(" ");
-            const userGender = row.cells[2].innerText;
-            const userEmail = row.cells[3].innerText;
+            if (row) {
+                const userId = row.cells[0].innerText;
+                const userName = row.cells[1].innerText.split(" ")[0];
+                const userApellido = row.cells[1].innerText.split(" ").slice(1).join(" ");
+                const userGender = row.cells[2].innerText;
+                const userEmail = row.cells[3].innerText;
 
-            document.getElementById("editUserId").value = userId;
-            document.getElementById("editName").value = userName;
-            document.getElementById("editApellido").value = userApellido;
-            document.getElementById("editGender").value = userGender;
-            document.getElementById("editEmail").value = userEmail;
+                document.getElementById("editUserId").value = userId;
+                document.getElementById("editName").value = userName;
+                document.getElementById("editApellido").value = userApellido;
+                document.getElementById("editGender").value = userGender;
+                document.getElementById("editEmail").value = userEmail;
 
-            editModal.style.display = "flex";
+                // CORRECCIÓN: Asegurar que el formulario tenga la URL con el ID del usuario
+                document.getElementById("editUserForm").action = `/usuarios/${userId}`;
+
+                editModal.style.display = "flex";
+            }
         });
     });
 
@@ -35,8 +40,10 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll(".delete-btn").forEach(button => {
         button.addEventListener("click", function() {
             const row = this.closest("tr");
-            userIdToDelete = row.cells[0].innerText;
-            deleteModal.style.display = "flex";
+            if (row) {
+                userIdToDelete = row.cells[0].innerText;
+                deleteModal.style.display = "flex";
+            }
         });
     });
 
@@ -45,12 +52,16 @@ document.addEventListener("DOMContentLoaded", function() {
     confirmDeleteBtn.addEventListener("click", async function() {
         if (userIdToDelete !== null) {
             try {
+                // Usar la variable correcta
                 const response = await fetch(`/usuarios/${userIdToDelete}`, {
                     method: 'DELETE',
-                    headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content }
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                    }
                 });
+
                 if (response.ok) {
-                    document.querySelector(`tr td:first-child:contains('${userIdToDelete}')`).closest("tr").remove();
+                    document.querySelector(`tr[data-id='${userIdToDelete}']`).remove();
                     alert("Usuario eliminado correctamente");
                 } else {
                     alert("Error al eliminar usuario");
@@ -72,11 +83,13 @@ document.addEventListener("DOMContentLoaded", function() {
     viewButtons.forEach(button => {
         button.addEventListener("click", function() {
             const row = this.closest("tr");
-            document.getElementById("viewUserId").textContent = row.cells[0].textContent;
-            document.getElementById("viewUserName").textContent = row.cells[1].textContent;
-            document.getElementById("viewUserGender").textContent = row.cells[2].textContent;
-            document.getElementById("viewUserEmail").textContent = row.cells[3].textContent;
-            viewModal.style.display = "block";
+            if (row) {
+                document.getElementById("viewUserId").textContent = row.cells[0].textContent;
+                document.getElementById("viewUserName").textContent = row.cells[1].textContent;
+                document.getElementById("viewUserGender").textContent = row.cells[2].textContent;
+                document.getElementById("viewUserEmail").textContent = row.cells[3].textContent;
+                viewModal.style.display = "block";
+            }
         });
     });
 

@@ -29,7 +29,7 @@
                 <button class="delete-btn" data-id="{{ $usuario->id }}">Eliminar</button>
             </td>
         </tr>
-    @endforeach
+    @endforeach    
     </tbody>
 </table>
 <div id="userModal" class="modal">
@@ -84,7 +84,9 @@
     <div class="modal-content large-modal">
         <span class="close-btn" id="closeEditModalBtn">&times;</span>
         <h2>Editar Usuario</h2>
-        <form id="editUserForm" class="formulario">
+        <form id="editUserForm" class="formulario" method="POST" action="{{ route('users.update', ['id' => $usuario->id]) }}">
+            @csrf
+            @method('PUT')
             <input type="hidden" id="editUserId" name="id">
             
             <div class="form-group">
@@ -117,7 +119,9 @@
         </form>
     </div>
 </div>
-<div id="deleteUserModal" class="modal">
+<div id="deleteUserForm" method="POST" action="{{ route('users.destroy', ['id' => $usuario->id]) }}">
+    @csrf
+    @method('DELETE')
     <div class="modal-content">
         <span class="close-btn" id="closeDeleteModalBtn">&times;</span>
         <h2>¿Estás seguro de que deseas eliminar este usuario?</h2>
@@ -126,7 +130,7 @@
             <button id="confirmDeleteBtn" class="btn btn-danger">Eliminar</button>
         </div>
     </div>
-</div>
+</d>
 
 <script src="{{ asset('js/editarverdelete.js') }}"></script>
 @endsection

@@ -23,12 +23,12 @@ Route::get('/dashboard', function () {
 });
 
 // Usuarios
-Route::get('/usuarios', [usuarioController::class,'index'])->name('usuarios.index');
-Route::get('/usuarios/create',[usuarioController::class,'create']);
-Route::post('/usuarios/data',[usuarioController::class,'store'])->name('users.store');
-Route::get('/usuarios/{id}',[usuarioController::class,'show']);
-Route::get('/usuarios/{id}/edit',[usuarioController::class,'edit']);
-Route::post('/usuarios/{id}',[usuarioController::class,'update']);
-Route::delete('/usuarios/{id}',[usuarioController::class,'destroy']);
+Route::get('/usuarios', [UsuarioController::class,'index'])->name('usuarios.index');
+Route::get('/usuarios/create',[UsuarioController::class,'create']);
+Route::post('/usuarios/data',[UsuarioController::class,'store'])->name('users.store');
+Route::get('/usuarios/{id}',[UsuarioController::class,'show']);
+Route::get('/usuarios/{id}/edit',[UsuarioController::class,'edit']);
+Route::put('usuarios/{id}', [UsuarioController::class, 'update'])->name('users.update');
+Route::delete('/usuarios/{id}', [UsuarioController::class, 'destroy'])->name('users.destroy');
 
 
