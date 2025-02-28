@@ -51,22 +51,23 @@ class UsuarioController extends Controller
         $request->validate([
             'nombre' => 'required',
             'apellido' => 'required',
-            'email' => 'required',
-            'password' => 'required',
+            'email' => 'required|email',
+            'password' => 'nullable|min:6',
         ]);
         $usuario = User::find($id);
         $usuario->name = $request->nombre;
         $usuario->apellido = $request->apellido;
         $usuario->email = $request->email;
-        $usuario->password = Hash::make($request->password);
+        if ($request->password) {
+            $usuario->password = Hash::make($request->password);
+        }
         $usuario->save();
-        return redirect('/usuarios');
+        return redirect('/usuarios')->with('success', 'Usuario actualizado correctamente.');
     }
     public function destroy($id)
     {
         $usuario = User::findOrFail($id);
         $usuario->delete();
-    
-        return response()->json(['message' => 'Usuario eliminado correctamente']);
-    }    
+        return response()->json(['success' => true, 'message' => 'Usuario eliminado correctamente']);
+    } 
 }
