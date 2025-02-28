@@ -139,8 +139,7 @@
             <button id="confirmDeleteBtn" class="btn btn-danger" type="submit">Eliminar</button>
         </div>
     </div>
-</d>
-
+</div>
 <script src="{{ asset('js/editarverdelete.js') }}"></script>
 @endsection
 

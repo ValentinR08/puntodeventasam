@@ -4,28 +4,27 @@ document.addEventListener("DOMContentLoaded", function() {
     const closeEditBtn = document.getElementById("closeEditModalBtn");
     const editButtons = document.querySelectorAll(".edit-btn");
 
-    editButtons.forEach(button => {
-        button.addEventListener("click", function() {
-            const row = this.closest("tr");
-            if (row) {
-                const userId = row.cells[0].innerText;
-                const userName = row.cells[1].innerText.split(" ")[0];
-                const userApellido = row.cells[1].innerText.split(" ").slice(1).join(" ");
-                const userGender = row.cells[2].innerText;
-                const userEmail = row.cells[3].innerText;
-
-                document.getElementById("editUserId").value = userId;
-                document.getElementById("editName").value = userName;
-                document.getElementById("editApellido").value = userApellido;
-                document.getElementById("editGender").value = userGender;
-                document.getElementById("editEmail").value = userEmail;
-
-                // CORRECCIÓN: Asegurar que el formulario tenga la URL con el ID del usuario
-                document.getElementById("editUserForm").action = `/usuarios/${userId}`;
-
-                editModal.style.display = "flex";
+    document.getElementById("editUserForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        try {
+            const response = await fetch(this.action, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                    'X-HTTP-Method-Override': 'PUT' // Para simular el método PUT
+                },
+                body: formData
+            });
+            if (response.ok) {
+                alert("Usuario actualizado correctamente");
+                location.reload(); // Recargar la página para ver los cambios
+            } else {
+                alert("Error al actualizar el usuario");
             }
-        });
+        } catch (error) {
+            alert("Error en la solicitud");
+        }
     });
 
     closeEditBtn.addEventListener("click", () => editModal.style.display = "none");
@@ -39,10 +38,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.querySelectorAll(".delete-btn").forEach(button => {
         button.addEventListener("click", function() {
-            const row = this.closest("tr");
+            const row = document.querySelector(`tr:has(button[data-id='${userIdToDelete}'])`);
             if (row) {
-                userIdToDelete = row.cells[0].innerText;
-                deleteModal.style.display = "flex";
+                row.remove();
             }
         });
     });
