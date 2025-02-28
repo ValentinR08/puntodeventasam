@@ -70,6 +70,6 @@ class UsuarioController extends Controller
         $usuario = User::findOrFail($id);
         $usuario->active = false;
     
-        return response()->json(['message' => 'Usuario eliminado correctamente']);
+        return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado correctamente.');
     }    
 }
