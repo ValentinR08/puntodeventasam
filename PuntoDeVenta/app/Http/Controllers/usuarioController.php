@@ -34,7 +34,7 @@ class UsuarioController extends Controller
         $usuario->email = $request->email;
         $usuario->password = Hash::make($request->password);
         $usuario->save();
-        return redirect()->route('usuarios.index')->with('success', 'Usuario guardado correctamente.');
+        return redirect()->route('usuarios.index');
     }
     public function show($id)
     {
@@ -63,13 +63,16 @@ class UsuarioController extends Controller
             $usuario->password = Hash::make($request->password);
         }
         $usuario->save();
-        return redirect('/usuarios')->with('success', 'Usuario actualizado correctamente.');
+        return redirect('/usuarios');
     }
     public function destroy($id)
     {
-        $usuario = User::findOrFail($id);
-        $usuario->active = false;
-    
-        return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado correctamente.');
-    }    
+        $user = User::find($id);
+        if ($user) {
+            $user->delete(); 
+            return response()->json(['message' => 'Usuario eliminado correctamente'], 200);
+        } else {
+            return response()->json(['message' => 'Usuario no encontrado'], 404);
+        }
+    }
 }

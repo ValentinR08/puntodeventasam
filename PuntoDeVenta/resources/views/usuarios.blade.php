@@ -123,23 +123,26 @@
                 <label for="editPassword">Nueva Contraseña (opcional)</label>
             </div>
             <div class="modal-buttons">
-                <button type="submit" class="save">Guardar Cambios</button>
+                <button type="submit" id="edit-btn" class="save">Guardar Cambios</button>
             </div>
         </form>
     </div>
 </div>
-<div id="deleteUserForm" method="POST" action="{{ route('users.destroy', $usuario->id) }}">
-    @csrf
-    @method('DELETE')
+<div id="deleteUserModal" class="modal">
     <div class="modal-content">
         <span class="close-btn" id="closeDeleteModalBtn">&times;</span>
         <h2>¿Estás seguro de que deseas eliminar este usuario?</h2>
         <p class="warning-text">Esta acción no se puede deshacer.</p>
-        <div class="modal-buttons">
-            <button id="confirmDeleteBtn" class="btn btn-danger" type="submit">Eliminar</button>
-        </div>
+        <form id="deleteUserForm" method="POST" action="{{ route('users.destroy', $usuario->id) }}">
+            @csrf
+            @method('DELETE')
+            <div class="modal-buttons">
+                <button id="confirmDeleteBtn" data-user-id="{{ $usuario->id }}" class="btn btn-danger" type="submit">Eliminar</button>
+            </div>
+        </form>
     </div>
 </div>
-<script src="{{ asset('js/editarverdelete.js') }}"></script>
+
+<script src="{{ asset('js/evd.js') }}"></script>
 @endsection
 
