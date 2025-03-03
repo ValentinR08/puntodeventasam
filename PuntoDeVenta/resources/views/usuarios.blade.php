@@ -137,7 +137,7 @@
             @csrf
             @method('DELETE')
             <div class="modal-buttons">
-                <button id="confirmDeleteBtn" data-user-id="{{ $usuario->id }}" class="btn btn-danger" type="submit">Eliminar</button>
+                <button id="confirmDeleteBtn" class="btn btn-danger" type="submit">Eliminar</button>
             </div>
         </form>
     </div>

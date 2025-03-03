@@ -30,12 +30,21 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener("click", event => { if (event.target === editModal) editModal.style.display = "none"; });
 
     // Eliminar usuario
+    const deleteModal = document.getElementById("deleteUserModal");
+    const closeDeleteBtn = document.getElementById("closeDeleteModalBtn");
+    const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
+    let userIdToDelete = null;
+
     document.querySelectorAll(".delete-btn").forEach(button => {
         button.addEventListener("click", function() {
-            const userIdToDelete = this.getAttribute("data-id"); 
+            userIdToDelete = this.getAttribute("data-id"); 
             document.getElementById("deleteUserForm").action = `/usuarios/${userIdToDelete}`;
             deleteModal.style.display = "block"; 
         });
+    });
+
+    closeDeleteBtn.addEventListener("click", function () {
+        deleteModal.style.display = "none";
     });
     
     document.getElementById("deleteUserForm").addEventListener("submit", async function (e) {
@@ -51,9 +60,9 @@ document.addEventListener("DOMContentLoaded", function() {
     
             if (response.ok) {
                 alert("Usuario eliminado correctamente");
-                location.reload(); // Recargar la página después de eliminar
+                location.reload();
             } else {
-                const errorData = await response.json(); // Obtener detalles del error
+                const errorData = await response.json();
                 alert(`Error al eliminar el usuario: ${errorData.message}`);
             }
         } catch (error) {
